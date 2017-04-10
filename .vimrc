@@ -1,0 +1,148 @@
+call plug#begin('~/.vim/plugged')
+  Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'KeitaNakamura/neodark.vim'
+  Plug 'tpope/vim-fugitive'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'scrooloose/nerdtree'
+  Plug 'scrooloose/nerdcommenter'
+  Plug 'rbgrouleff/bclose.vim'
+  Plug 'w0rp/ale'
+  Plug 'chriskempson/base16-vim'
+
+  " ruby
+  Plug 'vim-ruby/vim-ruby'
+
+  " github gists
+  Plug 'mattn/webapi-vim'
+  Plug 'mattn/gist-vim'
+
+  " javascript
+  " Plug 'mxw/vim-jsx'
+  " Plug 'isRuslan/vim-es6'
+  Plug 'othree/yajs.vim'
+  Plug 'othree/html5.vim'
+  Plug 'HerringtonDarkholme/yats.vim'
+call plug#end()
+
+let mapleader = ","
+
+set wildmenu
+
+set nocompatible      " We're running Vim, not Vi!
+syntax on             " Enable syntax highlighting
+filetype on           " Enable filetype detection
+filetype indent on    " Enable filetype-specific indenting
+filetype plugin on    " Enable filetype-specific plugins
+
+" remove trailing whitespaces on buffer write
+autocmd BufWritePre * %s/\s\+$//e
+
+" hilight search terms
+set hlsearch
+
+" general mapping {
+  nnoremap <leader>ev :vs $MYVIMRC<cr>
+  nnoremap <leader>sv :source $MYVIMRC<cr>
+  nnoremap <silent> <leader><space> :noh<cr>
+  " scroll up one line
+  nnoremap <c-k> <c-y>
+  " scroll down one line
+  nnoremap <c-j> <c-e>
+  nmap <F1> <nop>
+  nnoremap ; :
+  vnoremap <silent> <leader>cp :w !xsel -b<cr>
+  nnoremap <silent> <leader>pa :r !xsel -b<cr>
+  nnoremap <silent> <leader>q :Bclose<cr>
+  nnoremap <space> za
+" }
+
+" theme & colors {
+  let base16colorspace=256
+  syntax enable
+  colorscheme base16-default-dark
+  let g:airline_theme='base16_oceanicnext'
+
+  " cursorline {
+    set cursorline
+    hi CursorLineNr cterm=None ctermfg=3
+    hi LineNr ctermbg=None
+  " }
+" }
+
+" wrap & break {
+  set linebreak
+  let &showbreak = '>\ '
+" }
+
+" fold {
+  set foldmethod=syntax
+  set foldlevel=10
+" }
+
+" tabulations {
+  set expandtab
+  set tabstop=2
+  set softtabstop=2
+  set shiftwidth=2
+" }
+
+" ruler {
+  set number
+" }
+
+" airline {
+  let g:airline#extensions#tabline#enabled=1
+  let g:airline_powerline_fonts=1
+  let g:airline_right_sep=''
+  let g:airline_left_sep=''
+  let g:airline#extensions#tabline#left_sep=''
+  let g:airline#extensions#tabline#right_sep=''
+  let g:airline#extensions#tabline#left_alt_sep=''
+  let g:airline#extensions#wordcount#enabled=0
+  set laststatus=2
+" }
+
+" ctrlp {
+  let g:ctrlp_custom_ignore = {
+    \ 'dir': '\v(node_modules|__pycache__)$',
+    \ 'file': '\v\.(pyc|o)$'
+    \ }
+" }
+
+" nerdtree {
+  nnoremap <c-n> :NERDTreeToggle<cr>
+" }
+
+" nerdcommenter {
+  let g:NERDSpaceDelims = 1
+  let g:NERDCompactSexyComs = 1
+  let g:NERDDefaultAlign = 'left'
+" }
+
+" gist-vim {
+   let g:gist_clip_command='xclip -selection clipboard'
+   let g:gist_detect_filetype=1
+   let g:gist_post_private=1
+" }
+
+" ale {
+  let g:ale_linters = {
+    \ 'python': ['pylint'],
+    \ 'latex': []
+    \ }
+" }
+
+" tabs & buffers {
+  nnoremap <leader>tn :tabnew<cr>
+  nnoremap <leader>tj :tabnext<cr>
+  nnoremap <leader>tk :tabprev<cr>
+  nnoremap <leader>tt :tabedit
+
+  nnoremap <leader>j :bn<cr>
+  nnoremap <leader>k :bp<cr>
+" }
+
+" swap files {
+  set directory ^=~/.vimswap//
+" }
