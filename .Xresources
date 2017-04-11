@@ -10,13 +10,6 @@ Xft.rgba: rgb
 *.boldFont: xft:Roboto Mono Nerd Font:style=bold:pixelsize=13
 *.ItalicFont: xft:Roboto Mono Nerd Font:style=italic:pixelsize=13
 *.boldItalicfont: xft:Roboto Mono Nerd Font:style=boldItalic:pixelsize=13
-! URxvt.font: xft:Iosevka NF:style=medium:pixelsize=15
-! URxvt.font: xft:LiterationMonoPowerLine Nerd Font:style=medium:pixelsize=13
-
-
-! URxvt.boldFont: xft:Inconsolata for Powerline Nerd Font:style=bold:pixelsize=15
-! URxvt.ItalicFont: xft:Inconsolata for Powerline Nerd Font:style=italic:pixelsize=15
-! URxvt.boldItalicFont: xft:Inconsolata for Powerline Nerd Font:style=bolditalic:pixelsize=15
 
 ! URxvt.letterSpace: -1
 
