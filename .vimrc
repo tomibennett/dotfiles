@@ -28,6 +28,8 @@ call plug#end()
 let mapleader = ","
 
 set wildmenu
+set autoread
+set autowrite
 
 set nocompatible      " We're running Vim, not Vi!
 syntax on             " Enable syntax highlighting
