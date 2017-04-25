@@ -48,15 +48,31 @@ set hlsearch
   nnoremap <leader>sv :source $MYVIMRC<cr>
   nnoremap <silent> <leader><space> :noh<cr>
   " scroll up one line
-  nnoremap <c-k> <c-y>
+  nnoremap <s-k> <c-y>
   " scroll down one line
-  nnoremap <c-j> <c-e>
+  nnoremap <s-j> <c-e>
   nmap <F1> <nop>
   nnoremap ; :
   vnoremap <silent> <leader>cp :w !xsel -b<cr>
   nnoremap <silent> <leader>pa :r !xsel -b<cr>
   nnoremap <silent> <leader>q :Bclose<cr>
   nnoremap <space> za
+  " splits {
+    nnoremap <silent>vv <c-w>v
+    nnoremap <silent>vs <c-w>s
+
+    nnoremap <c-h> <c-w>h
+    nnoremap <c-j> <c-w>j
+    nnoremap <c-k> <c-w>k
+    nnoremap <c-l> <c-w>l
+  " }
+" }
+
+" resize {
+  nnoremap <c-s>- :res -5<cr>
+  nnoremap <c-s>+ :res +5<cr>
+  nnoremap <c-\>> :vertical-res +5<cr>
+  nnoremap <c-<>  :vertical-res -5<cr>
 " }
 
 " theme & colors {
