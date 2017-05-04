@@ -13,7 +13,8 @@
 # env {
   export EDITOR=vim
   export PATH="$PATH:$HOME/bin"
-  export XDG_CONFIG_HOME="/home/tom/.config"
+  export XDG_CONFIG_HOME="$HOME/.config"
+  export ANDROID_HOME="$HOME/Android"
   eval "$(rbenv init -)"
 # }
 
