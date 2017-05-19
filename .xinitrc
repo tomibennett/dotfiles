@@ -6,6 +6,7 @@ dropbox&
 sh ~/.fehbg &
 blueman-applet &
 mpd&
+systemctl --user start xscreensaver.service
 
 # exec bspwm
 # exec cinnamon-session

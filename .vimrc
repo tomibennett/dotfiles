@@ -7,8 +7,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'scrooloose/nerdtree'
   Plug 'scrooloose/nerdcommenter'
   Plug 'rbgrouleff/bclose.vim'
-  Plug 'w0rp/ale'
   Plug 'chriskempson/base16-vim'
+  Plug 'valloric/youcompleteme'
 
   " ruby
   Plug 'vim-ruby/vim-ruby'
@@ -39,128 +39,113 @@ filetype plugin on    " Enable filetype-specific plugins
 
 " remove trailing whitespaces on buffer write
 autocmd BufWritePre * %s/\s\+$//e
-
 " hilight search terms
 set hlsearch
+" ruler
+set number
 
-" general mapping {
-  nnoremap <leader>ev :vs $MYVIMRC<cr>
-  nnoremap <leader>sv :source $MYVIMRC<cr>
-  nnoremap <silent> <leader><space> :noh<cr>
-  " scroll up one line
-  nnoremap <s-k> <c-y>
-  " scroll down one line
-  nnoremap <s-j> <c-e>
-  nmap <F1> <nop>
-  nnoremap ; :
-  vnoremap <silent> <leader>cp :w !xsel -b<cr>
-  nnoremap <silent> <leader>pa :r !xsel -b<cr>
-  nnoremap <silent> <leader>q :Bclose<cr>
-  nnoremap <space> za
-  " splits {
-    nnoremap <silent>vv <c-w>v
-    nnoremap <silent>vs <c-w>s
 
-    nnoremap <c-h> <c-w>h
-    nnoremap <c-j> <c-w>j
-    nnoremap <c-k> <c-w>k
-    nnoremap <c-l> <c-w>l
-  " }
-" }
+" mapping
+nnoremap <leader>ev :vs $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <silent> <leader><space> :noh<cr>
+nnoremap <s-k> <c-y>
+nnoremap <s-j> <c-e>
+nmap <F1> <nop>
+nnoremap ; :
+vnoremap <silent> <leader>cp :w !xsel -b<cr>
+nnoremap <silent> <leader>pa :r !xsel -b<cr>
+nnoremap <silent> <leader>q :Bclose<cr>
+nnoremap <space> za
+" splits
+nnoremap <silent>vv <c-w>v
+nnoremap <silent>vs <c-w>s
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+" resize
+nnoremap <c-s>- :res -5<cr>
+nnoremap <c-s>+ :res +5<cr>
+nnoremap <c-\>> :vertical-res +5<cr>
+nnoremap <c-\<>  :vertical-res -5<cr>
 
-" resize {
-  nnoremap <c-s>- :res -5<cr>
-  nnoremap <c-s>+ :res +5<cr>
-  nnoremap <c-\>> :vertical-res +5<cr>
-  nnoremap <c-<>  :vertical-res -5<cr>
-" }
 
-" theme & colors {
-  let base16colorspace=256
-  syntax enable
-  colorscheme base16-default-dark
-  let g:airline_theme='base16_oceanicnext'
+" theme & colors
+let base16colorspace=256
+colorscheme base16-default-dark
+let g:airline_theme='base16_oceanicnext'
+" cursorline
+set cursorline
+hi CursorLineNr cterm=None ctermfg=3
+hi LineNr ctermbg=None
 
-  " cursorline {
-    set cursorline
-    hi CursorLineNr cterm=None ctermfg=3
-    hi LineNr ctermbg=None
-  " }
-" }
 
-" wrap & break {
-  set linebreak
-  let &showbreak = '>\ '
-" }
+" wrap & break
+set linebreak
+let &showbreak = '>\ '
 
-" fold {
-  set foldmethod=syntax
-  set foldlevel=10
-" }
 
-" tabulations {
-  set expandtab
-  set tabstop=2
-  set softtabstop=2
-  set shiftwidth=2
-" }
+" fold
+set foldmethod=syntax
+set foldlevel=10
 
-" ruler {
-  set number
-" }
 
-" airline {
-  let g:airline#extensions#tabline#enabled=1
-  let g:airline_powerline_fonts=1
-  let g:airline_right_sep=''
-  let g:airline_left_sep=''
-  let g:airline#extensions#tabline#left_sep=''
-  let g:airline#extensions#tabline#right_sep=''
-  let g:airline#extensions#tabline#left_alt_sep=''
-  let g:airline#extensions#wordcount#enabled=0
-  set laststatus=2
-" }
+" tabulations
+set expandtab
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 
-" ctrlp {
-  let g:ctrlp_custom_ignore = {
-    \ 'dir': '\v(node_modules|__pycache__)$',
-    \ 'file': '\v\.(pyc|o)$'
-    \ }
-" }
 
-" nerdtree {
+" airline
+let g:airline#extensions#tabline#enabled=1
+let g:airline_powerline_fonts=1
+let g:airline_right_sep=''
+let g:airline_left_sep=''
+let g:airline#extensions#tabline#left_sep=''
+let g:airline#extensions#tabline#right_sep=''
+let g:airline#extensions#tabline#left_alt_sep=''
+let g:airline#extensions#wordcount#enabled=0
+set laststatus=2
+
+
+" ctrlp
+let g:ctrlp_custom_ignore = {
+  \ 'dir': '\v(node_modules|__pycache__)$',
+  \ 'file': '\v\.(pyc|o)$'
+  \ }
+
+
+" nerdtree
   nnoremap <c-n> :NERDTreeToggle<cr>
-" }
 
-" nerdcommenter {
-  let g:NERDSpaceDelims = 1
-  let g:NERDCompactSexyComs = 1
-  let g:NERDDefaultAlign = 'left'
-" }
 
-" gist-vim {
-   let g:gist_clip_command='xclip -selection clipboard'
-   let g:gist_detect_filetype=1
-   let g:gist_post_private=1
-" }
+" nerdcommenter
+let g:NERDSpaceDelims = 1
+let g:NERDCompactSexyComs = 1
+let g:NERDDefaultAlign = 'left'
 
-" ale {
-  let g:ale_linters = {
-    \ 'python': ['pylint'],
-    \ 'latex': []
-    \ }
-" }
 
-" tabs & buffers {
-  nnoremap <leader>tn :tabnew<cr>
-  nnoremap <leader>tj :tabnext<cr>
-  nnoremap <leader>tk :tabprev<cr>
-  nnoremap <leader>tt :tabedit
+" gist-vim
+let g:gist_clip_command='xclip -selection clipboard'
+let g:gist_detect_filetype=1
+let g:gist_post_private=1
 
-  nnoremap <leader>j :bn<cr>
-  nnoremap <leader>k :bp<cr>
-" }
 
-" swap files {
-  set directory ^=~/.vimswap//
-" }
+" YouCompleteMe
+let g:ycm_autoclose_preview_window_after_completion = 1
+
+
+" tabs & buffers
+nnoremap <silent> <leader>tn :tabnew<cr>
+nnoremap <silent> <leader>tj :tabnext<cr>
+nnoremap <silent> <leader>tk :tabprev<cr>
+nnoremap <silent> <leader>tt :tabedit
+
+nnoremap <silent> <leader>j :bn<cr>
+nnoremap <silent> <leader>k :bp<cr>
+
+
+" swap files
+set directory ^=~/.vimswap//
