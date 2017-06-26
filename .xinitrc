@@ -1,13 +1,12 @@
 [[ -L ~/.Xresources ]] && xrdb ~/.Xresources
 
-setxkbmap -option caps:ctrl_modifier
-
-dropbox&
-sh ~/.fehbg &
-blueman-applet &
+# setxkbmap -option caps:ctrl_modifier
 mpd&
-systemctl --user start xscreensaver.service
 
-# exec bspwm
-# exec cinnamon-session
-exec i3
+# dropbox&
+# sh ~/.fehbg &
+# blueman-applet &
+# systemctl --user start xscreensaver.service
+#
+# exec i3
+# exec gnome-session

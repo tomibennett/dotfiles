@@ -7,7 +7,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'scrooloose/nerdtree'
   Plug 'scrooloose/nerdcommenter'
   Plug 'rbgrouleff/bclose.vim'
-  Plug 'chriskempson/base16-vim'
+  Plug 'chriskempson/vim-tomorrow-theme'
   Plug 'valloric/youcompleteme'
 
   " ruby
@@ -26,6 +26,8 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 let mapleader = ","
+
+set backspace=indent,eol,start
 
 set wildmenu
 set autoread
@@ -46,6 +48,7 @@ set number
 
 
 " mapping
+inoremap jj <esc>
 nnoremap <leader>ev :vs $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <silent> <leader><space> :noh<cr>
@@ -69,12 +72,15 @@ nnoremap <c-s>- :res -5<cr>
 nnoremap <c-s>+ :res +5<cr>
 nnoremap <c-\>> :vertical-res +5<cr>
 nnoremap <c-\<>  :vertical-res -5<cr>
+nnoremap <leader>f gg=G<c-o><c-o>
 
 
 " theme & colors
-let base16colorspace=256
-colorscheme base16-default-dark
-let g:airline_theme='base16_oceanicnext'
+syntax enable
+
+colorscheme Tomorrow-Night
+let g:airline_theme='tomorrow'
+
 " cursorline
 set cursorline
 hi CursorLineNr cterm=None ctermfg=3
@@ -107,6 +113,7 @@ let g:airline#extensions#tabline#left_sep=''
 let g:airline#extensions#tabline#right_sep=''
 let g:airline#extensions#tabline#left_alt_sep=''
 let g:airline#extensions#wordcount#enabled=0
+let g:airline#extensions#tabline#fnamemod = ':t'
 set laststatus=2
 
 

@@ -1,2 +1,19 @@
+# local specific
 Session.vim
 local_content
+TAGS
+
+# javascript related
+node_modules
+
+# vagrant
+.vagrant
+
+# pow
+.powenw
+
+# jetbrains
+.idea/
+
+# redis
+*.rdb
