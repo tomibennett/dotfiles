@@ -39,6 +39,7 @@
 ;; indentation setting
 (setq-default indent-tabs-mode nil)
 (setq tab-width 2)
+(setq ring-bell-function 'ignore)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
