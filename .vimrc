@@ -10,6 +10,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'chriskempson/vim-tomorrow-theme'
   Plug 'valloric/youcompleteme'
 
+  " psql
+  Plug 'exu/pgsql.vim'
+
   " ruby
   Plug 'vim-ruby/vim-ruby'
 
