@@ -2,6 +2,8 @@
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -15,7 +17,7 @@
  '(global-linum-mode t)
  '(package-selected-packages
    (quote
-    (ac-inf-ruby inf-ruby flx-ido projectile smartparens enh-ruby-mode auto-complete rbenv rspec-mode use-package color-theme-sanityinc-tomorrow neotree all-the-icons feature-mode fiplr markdown-mode)))
+    (org-bullets exec-path-from-shell ggtags ac-inf-ruby inf-ruby flx-ido projectile smartparens enh-ruby-mode auto-complete rbenv rspec-mode use-package color-theme-sanityinc-tomorrow neotree all-the-icons feature-mode fiplr markdown-mode)))
  '(smartparens-global-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -71,6 +73,8 @@
 (ac-config-default)
 (require 'smartparens-config)
 
+(projectile-mode)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; cucumber features
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -83,33 +87,30 @@
 ;; Markdown related
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package markdown-mode
-	     :ensure t
-	     :commands (markdown-mode gfm-mode)
-	     :mode (("README\\.md\\'" . gfm.mode)
-		    ("\\.md\\'" . markdown-mode)
-		    ("\\.markdown\\'" . markdown-mode))
-	     :init (setq markdown-command "multimarkdown"))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; neotree (with icons)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(require 'all-the-icons)
-(require 'neotree)
-(global-set-key (kbd "C-x n") 'neotree-toggle)
-(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+             :ensure t
+             :commands (markdown-mode gfm-mode)
+             :mode (("README\\.md\\'" . gfm.mode)
+                    ("\\.md\\'" . markdown-mode)
+                    ("\\.markdown\\'" . markdown-mode))
+             :init (setq markdown-command "multimarkdown"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; org-mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((C . t)))
+(use-package org-bullets
+  :ensure t
+  :config (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ruby
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(projectile-mode)
 (eval-after-load 'auto-complete
   '(add-to-list 'ac-modes 'inf-ruby-mode))
 (add-hook 'inf-ruby-mode-hook 'ac-inf-ruby-enable)
 (add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; javascript
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setq js-indent-level 2)
