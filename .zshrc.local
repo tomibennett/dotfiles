@@ -17,7 +17,6 @@
 
 # env {
   export EDITOR=vim
-  HOMEBREW_GITHUB_API_TOKEN="b604cdf960a858fbe4481c153ec24a9710467cbf"
   # export PATH="$PATH:$HOME/bin"
   # export XDG_CONFIG_HOME="$HOME/.config"
   # export ANDROID_HOME="$HOME/Android"
