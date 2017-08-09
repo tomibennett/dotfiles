@@ -2,6 +2,9 @@
 Session.vim
 local_content
 TAGS
+GTAGS
+GRTAGS
+GPATH
 
 # javascript related
 node_modules
