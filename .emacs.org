@@ -1,0 +1,147 @@
+#+STARTUP: content
+
+* Global configuration
+** general
+#+BEGIN_SRC emacs-lisp
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1)
+  (desktop-save-mode 1)
+  (global-linum-mode 1)
+  (add-hook 'before-save-hook 'whitespace-cleanup)
+  (defalias 'list-buffers 'ibuffer)
+  (fset 'yes-or-no-p 'y-or-n-p)
+#+END_SRC
+
+** Environment variables
+#+BEGIN_SRC emacs-lisp
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize))
+#+END_SRC
+** Backup files
+Save backups dans auto-save-files in custom emacs temporary directory.
+
+#+BEGIN_SRC emacs-lisp
+  (defconst emacs-tmp-dir (expand-file-name "~/.emacstmp/"))
+
+  (setq backup-directory-alist
+	`((".*" . ,emacs-tmp-dir)))
+  (setq auto-save-file-name-transforms
+	`((".*" ,emacs-tmp-dir t)))
+#+END_SRC
+
+** Indentation
+#+BEGIN_SRC lisp
+  (setq-default indent-tabs-mode nil)
+  (setq tab-width 2)
+#+END_SRC
+
+** Miscellaneous
+#+BEGIN_SRC emacs-lisp
+  (setq ring-bell-function 'ignore)
+#+END_SRC
+
+** Font
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'default-frame-alist '(font . "LiterationMonoPowerline Nerd Font 13"))
+  (set-face-attribute 'default t :font "LiterationMonoPowerline Nerd Font 13")
+#+END_SRC
+
+** theme
+#+BEGIN_SRC emacs-lisp
+  (use-package color-theme
+    :ensure t)
+
+  (use-package color-theme-sanityinc-tomorrow
+    :ensure t
+    :config (load-theme 'sanityinc-tomorrow-eighties t))
+#+END_SRC
+
+* Packages
+** Ace
+#+BEGIN_SRC emacs-lisp
+  (use-package ace-window
+    :ensure t
+    :init
+    (progn
+      (global-set-key [remap other-window] 'ace-window)
+      ))
+#+END_SRC
+
+** Swiper
+#+BEGIN_SRC emacs-lisp
+(use-package counsel
+  :ensure t)
+
+(use-package swiper
+  :ensure t
+  :bind (("C-s" . swiper)
+	 ("C-r" . swiper)
+	 ("C-c C-r" . ivy-resume)
+	 ("M-x" . counsel-M-x)
+	 ("C-x C-f" . counsel-find-file))
+  :config
+  (progn
+    (ivy-mode 1)
+    (setq ivy-use-virtual-buffers t)
+    (setq enable-recursive-minibuffers t)
+    ))
+#+END_SRC
+
+** smartparens
+#+BEGIN_SRC emacs-lisp
+  (use-package smartparens-config
+    :ensure smartparens
+    :config
+    (progn (show-smartparens-global-mode t)))
+
+  (add-hook 'prog-mode-hook 'turn-on-smartparens-strict-mode)
+  (add-hook 'markdown-mode-hook 'turn-on-smartparens-strict-mode)
+#+END_SRC
+
+* Modes
+** Markdown
+#+BEGIN_SRC emacs-lisp
+  (use-package markdown-mode
+    :ensure t
+    :commands (markdown-mode gfm-mode)
+    :mode (("README\\.md\\'" . gfm.mode)
+	   ("\\.md\\'" . markdown-mode)
+	   ("\\.markdown\\'" . markdown-mode))
+    :init (setq markdown-command "multimarkdown"))
+#+END_SRC
+
+** Org
+*** General
+#+BEGIN_SRC emacs-lisp
+  (use-package org-bullets
+    :ensure t
+    :config (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+#+END_SRC
+
+*** Clock
+#+BEGIN_SRC emacs-lisp
+  (setq org-time-clocksum-format
+	(quote (:hours "%d"
+		       :require-hours t
+		       :minutes ":%02d"
+		       :require-minutes t)))
+#+END_SRC
+
+*** Babel
+Language specification
+#+BEGIN_SRC emacs-lisp
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((scheme . t)
+     (ruby . t)
+     (js . t)
+     (sh . t)))
+
+  (setq org-src-fontify-natively t)
+  (setq geiser-default-implementation 'mit)
+#+END_SRC
+
+** javascript
+#+BEGIN_SRC emacs-lisp
+  (setq js-indent-level 2)
+#+END_SRC
