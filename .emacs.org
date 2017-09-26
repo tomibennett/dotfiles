@@ -138,10 +138,14 @@ Language specification
      (sh . t)))
 
   (setq org-src-fontify-natively t)
-  (setq geiser-default-implementation 'mit)
+  (setq geiser-default-implementation 'guile)
 #+END_SRC
 
 ** javascript
 #+BEGIN_SRC emacs-lisp
-  (setq js-indent-level 2)
+  (use-package js2-mode
+    :ensure t
+    :mode (("\\.js\\'" . js2-mode))
+    :init (setq js-indent-align-list-continuation nil)
+    (setq js2-basic-offset 2))
 #+END_SRC

@@ -3,6 +3,7 @@
 # }
 
 # alias {
+  alias tails='less -Rian +G'
   alias cal='cal -m'
   alias txa='tmux a -t'
   alias txn='tmux new -s'

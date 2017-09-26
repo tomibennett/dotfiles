@@ -19,7 +19,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (geiser use-package smartparens org-bullets markdown-mode exec-path-from-shell counsel color-theme-sanityinc-tomorrow color-theme ace-window))))
+    (js-align js2-mode geiser use-package smartparens org-bullets markdown-mode exec-path-from-shell counsel color-theme-sanityinc-tomorrow color-theme ace-window))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -23,3 +23,7 @@
   export PATH="$NPM_PACKAGES/bin:$PATH"
   unset MANPATH
 # }
+
+# postgreSQL {
+  export PGDATA="/usr/local/var/postgres"
+# }
