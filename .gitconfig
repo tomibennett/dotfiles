@@ -1,10 +1,11 @@
 [core]
 	excludesfile = /Users/tom/.gitignore
 [user]
-	name = mahloun
-	email = thms.no@gmail.com
+	name = tbenett
+	email = tom@benett.io
+	signingkey = 64244C9161073F23
 [alias]
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   lgn = log --graph --no-color --pretty=format:'%h -%d %s (%cr) <%an>' --abbrev-commit
 [github]
-	user = mahloun
+	user = tbenett

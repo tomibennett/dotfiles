@@ -9,6 +9,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'rbgrouleff/bclose.vim'
   Plug 'chriskempson/vim-tomorrow-theme'
   Plug 'valloric/youcompleteme'
+  Plug 'tpope/vim-db'
+
+  " git
+  Plug 'rdolgushin/gitignore.vim'
 
   " psql
   Plug 'exu/pgsql.vim'

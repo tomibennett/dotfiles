@@ -12,11 +12,18 @@
   (fset 'yes-or-no-p 'y-or-n-p)
 #+END_SRC
 
+** input language
+#+BEGIN_SRC emacs-lisp
+  (set-language-environment "UTF-8")
+  (set-default-coding-systems 'utf-8)
+#+END_SRC
+
 ** Environment variables
 #+BEGIN_SRC emacs-lisp
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize))
 #+END_SRC
+
 ** Backup files
 Save backups dans auto-save-files in custom emacs temporary directory.
 
@@ -37,6 +44,7 @@ Save backups dans auto-save-files in custom emacs temporary directory.
 
 ** Miscellaneous
 #+BEGIN_SRC emacs-lisp
+  ; disable bell
   (setq ring-bell-function 'ignore)
 #+END_SRC
 
@@ -51,12 +59,17 @@ Save backups dans auto-save-files in custom emacs temporary directory.
   (use-package color-theme
     :ensure t)
 
-  (use-package color-theme-sanityinc-tomorrow
-    :ensure t
-    :config (load-theme 'sanityinc-tomorrow-eighties t))
+  (load-theme 'leuven t)
 #+END_SRC
 
 * Packages
+** gist
+   #+BEGIN_SRC emacs-lisp
+     (use-package gist
+       :ensure t
+     )
+   #+END_SRC
+
 ** Ace
 #+BEGIN_SRC emacs-lisp
   (use-package ace-window
@@ -115,7 +128,9 @@ Save backups dans auto-save-files in custom emacs temporary directory.
 #+BEGIN_SRC emacs-lisp
   (use-package org-bullets
     :ensure t
-    :config (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+    :config (add-hook 'org-mode-hook (lambda () ((org-bullets-mode 1) (load-theme 'leuven)))
+
+  (setq org-fontify-whole-heading-line t)
 #+END_SRC
 
 *** Clock

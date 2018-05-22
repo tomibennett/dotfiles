@@ -1,3 +1,25 @@
+mkcdir() {
+  mkdir -p -- "$1" \
+    && cd -- "$1"
+}
+
+
+my_git-commit() {
+  git commit -m "$1($2): $3"
+}
+
+gcft() {
+  my_git-commit "feat" $1 $2
+}
+
+gcrft() {
+  my_git-commit "refacto" $1 $2
+}
+
+gcfx() {
+  my_git-commit "fix" $1 $2
+}
+
 # flow of control {
   # stty -ixon
 # }
@@ -7,12 +29,12 @@
   alias cal='cal -m'
   alias txa='tmux a -t'
   alias txn='tmux new -s'
-  alias txl='tmux ls'
+  alias txl='tmux ls | cut -d ":" -f 1'
+  alias txr='tmux new -s default'
   # netctl
   # alias netrestart='sudo systemctl restart netctl-auto@wlp4s0.service'
   # networkmanager
   # alias netrestart='sudo systemctl restart NetworkManager.service'
-  alias emacs='emacs -nw'
   alias clisp='clisp -q'
   alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
   alias firefox="/Applications/Firefox.app/Contents/MacOS/firefox"
@@ -20,6 +42,7 @@
 
 # env {
   export EDITOR=vim
+  export HOMEBREW_GITHUB_API_TOKEN="ecf75d99ae4e80b1b4c36c5b2bccc5ef990d6c3b"
   # export PATH="$PATH:$HOME/bin"
   # export XDG_CONFIG_HOME="$HOME/.config"
   # export ANDROID_HOME="$HOME/Android"
