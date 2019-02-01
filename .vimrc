@@ -10,6 +10,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'chriskempson/vim-tomorrow-theme'
   Plug 'valloric/youcompleteme'
   Plug 'tpope/vim-db'
+  Plug 'ekalinin/Dockerfile.vim'
 
   " git
   Plug 'rdolgushin/gitignore.vim'
@@ -148,6 +149,7 @@ let g:gist_post_private=1
 
 
 " YouCompleteMe
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_autoclose_preview_window_after_completion = 1
 
 
