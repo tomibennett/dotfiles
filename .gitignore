@@ -20,6 +20,3 @@ node_modules
 
 # redis
 *.rdb
-
-# jetbrains
-.idea/
