@@ -3,7 +3,6 @@ mkcdir() {
     && cd -- "$1"
 }
 
-
 my_git-commit() {
   git commit -m "$1($2): $3"
 }
@@ -25,6 +24,7 @@ gcfx() {
 # }
 
 # alias {
+  alias bat='bat -n --theme TwoDark'
   alias tails='less -Rian +G'
   alias cal='cal -m'
   alias txa='tmux a -t'
@@ -40,21 +40,16 @@ gcfx() {
   alias firefox="/Applications/Firefox.app/Contents/MacOS/firefox"
 # }
 
-# env {
-  export EDITOR=vim
-  export HOMEBREW_GITHUB_API_TOKEN="ecf75d99ae4e80b1b4c36c5b2bccc5ef990d6c3b"
-  # export PATH="$PATH:$HOME/bin"
-  # export XDG_CONFIG_HOME="$HOME/.config"
-  # export ANDROID_HOME="$HOME/Android"
-  # qt apps need this to be set to display correctly
-  # export QT_AUTO_SCREEN_SCALE_FACTOR=0
+# fzf {
+  # auto-completion
+  # ---------------
+  [[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2> /dev/null
+
+  # Key bindings
+  # ------------
+  source "/usr/local/opt/fzf/shell/key-bindings.zsh"
 # }
 
-# ruby {
-  eval "$(rbenv init -)"
-  alias be='bundle exec'
-# }
-
-# javascript {
-  export NPM_PACKAGES="${HOME}/.npm-packages"
-# }
+# Local Variables:
+# mode: sh
+# End:
