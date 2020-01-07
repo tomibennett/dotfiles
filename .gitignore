@@ -1,22 +1,7 @@
-# local specific
-Session.vim
-local_content
-TAGS
-GTAGS
-GRTAGS
-GPATH
+notes
 
-# javascript related
-node_modules
+.idea
 
-# vagrant
-.vagrant
 
-# pow
-.powenw
-
-# jetbrains
-.idea/
-
-# redis
-*.rdb
+# emacs temps files
+.\#*

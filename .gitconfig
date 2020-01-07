@@ -2,7 +2,7 @@
 	excludesfile = /Users/tom/.gitignore
 [user]
 	name = tbenett
-	email = tom@benett.io
+	email = thomas@benett.io
 	signingkey = 64244C9161073F23
 [alias]
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
