@@ -69,8 +69,8 @@ mkcdir() {
 # }
 
 # java {
-  export SDKMAN_DIR="$HOME/.sdkman"
-  [[ -s "/Users/tom/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+  export SDKMAN_DIR="${HOME}/.sdkman"
+  [[ -s "${HOME}/.sdkman/bin/sdkman-init.sh" ]] && source "${HOME}/.sdkman/bin/sdkman-init.sh"
 # }
 
 # javascript {
