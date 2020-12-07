@@ -3,6 +3,10 @@ mkcdir() {
     && cd -- "$1"
 }
 
+# direnv {
+  eval "$(direnv hook zsh)"
+# }
+
 # flow of control {
   # stty -ixon
 # }
