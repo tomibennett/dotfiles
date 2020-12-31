@@ -3,17 +3,8 @@ mkcdir() {
     && cd -- "$1"
 }
 
-# direnv {
-  eval "$(direnv hook zsh)"
-# }
-
-# flow of control {
-  # stty -ixon
-# }
-
 # alias {
-  # makes curl not showing progress meter but still shows error message
-  alias scurl='curl -sS'
+  alias scurl='curl -sS' # hide progress meter but still shows error message
   alias bat='bat -n --theme TwoDark'
   alias tails='less -Rian +G'
   alias cal='cal -m'
@@ -22,14 +13,18 @@ mkcdir() {
   alias txl='tmux ls | cut -d ":" -f 1'
   alias txr='tmux new -s default'
   alias be='bundle exec'
-  # netctl
-  # alias netrestart='sudo systemctl restart netctl-auto@wlp4s0.service'
-  # networkmanager
-  # alias netrestart='sudo systemctl restart NetworkManager.service'
   alias clisp='clisp -q'
   alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
   alias firefox="/Applications/Firefox.app/Contents/MacOS/firefox"
   alias foxnw="firefox --new-window"
+# }
+
+# bin {
+  export PATH="$HOME/bin:$PATH"
+# }
+
+# direnv {
+  eval "$(direnv hook zsh)"
 # }
 
 # global {
@@ -43,8 +38,9 @@ mkcdir() {
   fi
 # }
 
-# own bin folder {
-  export PATH="$HOME/bin:$PATH"
+# java {
+  export SDKMAN_DIR="${HOME}/.sdkman"
+  [[ -s "${HOME}/.sdkman/bin/sdkman-init.sh" ]] && source "${HOME}/.sdkman/bin/sdkman-init.sh"
 # }
 
 # javascript {
@@ -59,28 +55,8 @@ mkcdir() {
   # }
 # }
 
-# spacemacs specific {
-  export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
-  export PKG_CONFIG_PATH="/usr/local/opt/imagemagick@6/lib/pkgconfig"
-# }
-
-# ruby {
-  eval "$(rbenv init -)"
-# }
-
 # LaTeX {
   export PATH="/Library/TeX/texbin:${PATH}"
-# }
-
-# java {
-  export SDKMAN_DIR="${HOME}/.sdkman"
-  [[ -s "${HOME}/.sdkman/bin/sdkman-init.sh" ]] && source "${HOME}/.sdkman/bin/sdkman-init.sh"
-# }
-
-# javascript {
-  export NPM_PACKAGES="${HOME}/.npm-packages"
-  export PATH="$NPM_PACKAGES/bin:$PATH"
-  unset MANPATH
 # }
 
 # libxml2 {
@@ -94,6 +70,15 @@ mkcdir() {
 
 # python {
   time eval "$(pyenv init -)"
+# }
+
+# ruby {
+  eval "$(rbenv init -)"
+# }
+
+# spacemacs {
+  export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
+  export PKG_CONFIG_PATH="/usr/local/opt/imagemagick@6/lib/pkgconfig"
 # }
 
 # Local Variables:
