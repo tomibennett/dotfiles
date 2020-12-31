@@ -29,7 +29,6 @@ mkcdir() {
 
 # global {
   export EDITOR=vim
-  export ***REMOVED***
 
   # do Brew setup on darwin
   if [[ -d /usr/local ]]; then
