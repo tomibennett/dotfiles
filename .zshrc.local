@@ -6,6 +6,9 @@ mkcdir() {
 # alias {
   alias scurl='curl -sS' # hide progress meter but still shows error message
   alias bat='bat -n --theme TwoDark'
+  alias ee='exa --long --classify --group'
+  alias ea='exa --long --classify --group --all'
+  alias tree='exa  --color=always --tree --classify --all'
   alias tails='less -Rian +G'
   alias cal='cal -m'
   alias txa='tmux a -t'
