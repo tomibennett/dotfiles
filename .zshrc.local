@@ -3,7 +3,7 @@ mkcdir() {
     && cd -- "$1"
 }
 
-# alias {
+# user {
   alias scurl='curl --silent --show-error'
   alias bat='bat --number --theme TwoDark'
   alias less='less --RAW-CONTROL-CHARS'
@@ -11,9 +11,6 @@ mkcdir() {
   alias ee='exa --long --classify --group'
   alias ea='exa --long --classify --group --all'
   alias tree='exa  --color=always --tree --classify --all'
-  alias cal='cal -m'
-  alias be='bundle exec'
-  alias clisp='clisp -q'
 
   #let logs files flow with the ability to stop and search in them
   alias tails='less -ia --RAW-CONTROL-CHARS --line-numbers +G'
@@ -31,6 +28,10 @@ mkcdir() {
 
 # bin {
   export PATH="$HOME/bin:$PATH"
+# }
+
+# lisp {
+  alias clisp='clisp -q'
 # }
 
 # direnv {
@@ -58,7 +59,6 @@ mkcdir() {
   unset MANPATH
 
   # nvm {
-    # very slow, we should do something to prevent it from loading this way
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh --no-use"  2> /dev/null # This loads nvm
   # }
@@ -83,6 +83,7 @@ mkcdir() {
 
 # ruby {
   eval "$(rbenv init -)"
+  alias be='bundle exec'
 # }
 
 # spacemacs {
