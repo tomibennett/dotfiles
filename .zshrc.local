@@ -4,19 +4,26 @@ mkcdir() {
 }
 
 # alias {
-  alias scurl='curl -sS' # hide progress meter but still shows error message
-  alias bat='bat -n --theme TwoDark'
+  alias scurl='curl --silent --show-error'
+  alias bat='bat --number --theme TwoDark'
+  alias less='less --RAW-CONTROL-CHARS'
+
   alias ee='exa --long --classify --group'
   alias ea='exa --long --classify --group --all'
   alias tree='exa  --color=always --tree --classify --all'
-  alias tails='less -Rian +G'
   alias cal='cal -m'
-  alias txa='tmux a -t'
-  alias txn='tmux new -s'
-  alias txl='tmux ls | cut -d ":" -f 1'
-  alias txr='tmux new -s default'
   alias be='bundle exec'
   alias clisp='clisp -q'
+
+  #let logs files flow with the ability to stop and search in them
+  alias tails='less -ia --RAW-CONTROL-CHARS --line-numbers +G'
+
+  alias txa='tmux attach -t # <target-session>'
+  alias txn='tmux new-session -s # <session-name>'
+  alias txl='tmux list-sessions | cut -d ":" -f 1'
+  # restore tmux sessions - depends on the presence of a session named default
+  alias txr='tmux new-session -s default'
+
   alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
   alias firefox="/Applications/Firefox.app/Contents/MacOS/firefox"
   alias foxnw="firefox --new-window"
