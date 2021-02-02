@@ -2,5 +2,6 @@
 
 .spacemacs.env
 
-# emacs temps files
-.\#*
+# temp files
+*.\#*
+*.swp
