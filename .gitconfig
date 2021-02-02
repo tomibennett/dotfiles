@@ -8,3 +8,5 @@
   lgn = log --graph --no-color --pretty=format:'%h -%d %s (%cr) <%an>' --abbrev-commit
 [github]
 	user = tbenett
+[init]
+	defaultBranch = master
