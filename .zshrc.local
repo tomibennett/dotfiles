@@ -4,6 +4,7 @@ mkcdir() {
 }
 
 # user {
+  alias date-iso='date +%Y%m%d'
   alias scurl='curl --silent --show-error'
   alias bat='bat --number --theme TwoDark'
   alias less='less --RAW-CONTROL-CHARS'
