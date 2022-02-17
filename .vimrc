@@ -8,7 +8,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'scrooloose/nerdcommenter'
   Plug 'rbgrouleff/bclose.vim'
   Plug 'chriskempson/vim-tomorrow-theme'
-  Plug 'valloric/youcompleteme'
   Plug 'tpope/vim-db'
   Plug 'ekalinin/Dockerfile.vim'
 
