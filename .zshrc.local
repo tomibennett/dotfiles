@@ -79,7 +79,7 @@ mkcdir() {
 # }
 
 # python {
-  time eval "$(pyenv init -)"
+  eval "$(pyenv init -)"
 # }
 
 # ruby {
