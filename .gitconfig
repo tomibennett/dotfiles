@@ -1,12 +1,14 @@
 [core]
 	excludesfile = /Users/tom/.gitignore
 [user]
-	name = tbenett
-	email = thomas@benett.io
+	name = tommychat
+	email = thomas.bennett@caminu.fr
 [alias]
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   lgn = log --graph --no-color --pretty=format:'%h -%d %s (%cr) <%an>' --abbrev-commit
 [github]
-	user = tbenett
+	user = tommychat
 [init]
-	defaultBranch = master
+	defaultBranch = main
+[commit]
+	gpgsign = true
