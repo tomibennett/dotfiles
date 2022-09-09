@@ -4,6 +4,7 @@ mkcdir() {
 }
 
 # user {
+  export GRIM_DEFAULT_DIR=${HOME}/Pictures/screenshots/
   alias date-iso='date +%Y%m%d'
   alias scurl='curl --silent --show-error'
   alias bat='bat --number --theme TwoDark'
@@ -30,6 +31,9 @@ mkcdir() {
   export GPG_TTY="$(tty)"
   export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
   gpgconf --launch gpg-agent
+
+  # strange bug and bug fix to affecting intellij
+  export _JAVA_AWT_WM_NONREPARENTING=1
 # }
 
 # bin {
