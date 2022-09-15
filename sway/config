@@ -282,6 +282,7 @@ bindsym --release $mod+Control+l exec loginctl lock-session
 
     # floating sticky minimizable Dictionnary
     for_window [class="^Antidote"] floating enable
+    no_focus [class="^Antidote" window_type="utility"]
     exec swaymsg 'exec Antidote; for_window [class="^Antidote"] move scratchpad'
     bindsym $mod+Shift+g [class="^Antidote 10$"] scratchpad show
 
