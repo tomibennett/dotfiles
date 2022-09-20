@@ -316,7 +316,7 @@ bindsym --release $mod+Control+l exec loginctl lock-session
     for_window [app_id="^nemo$"] floating enable
 
     # floating image viewer
-    for_window [app_id="^Image Viewer$"] floating enable
+    for_window [app_id="^eog$"] floating enable
 
     # floating calculator
     for_window [app_id="^org.gnome.Calculator$"] floating enable
