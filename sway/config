@@ -25,14 +25,19 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
 #
 # Launcher:
 #
+    set $bemenu_foreground_color #ffffff
+    set $bemenu_background_color #000000
+    set $bemenu_highlight_color #e5e5e5
+
     set $menu j4-dmenu-desktop \
-      --dmenu='bemenu --ignorecase \
-      --scrollbar autohide \
-      --margin 600 \
-      --prompt "$" \
-      --fn "NotoSans Nerd Font 14" \
-      --center \
-      --list 10'
+      --dmenu='bemenu \
+        --ignorecase \
+        --scrollbar autohide \
+        --margin 900 \
+        --prompt ">" \
+        --fn "Cantarell 15" \
+        --center \
+        --list 10'
 
 ### Output configuration
 #
