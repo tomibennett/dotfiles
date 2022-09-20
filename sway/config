@@ -301,6 +301,11 @@ bindsym --release $mod+Control+l exec loginctl lock-session
     exec swaymsg 'exec keepassxc; for_window [app_id="^org.keepassxc.KeePassXC$"] move scratchpad'
     bindsym $mod+Shift+f [app_id="^org.keepassxc.KeePassXC$"] scratchpad show
 
+    # minimizable sticky note app
+    for_window [class="^obsidian$"] floating enable
+    exec swaymsg 'exec obsidian; for_window [class="^obsidian$"] move scratchpad'
+    bindsym $mod+Shift+o [class="^obsidian$"] scratchpad show
+
 #
 # Windows behavior
 #
@@ -315,9 +320,6 @@ bindsym --release $mod+Control+l exec loginctl lock-session
 
     # floating calculator
     for_window [app_id="^org.gnome.Calculator$"] floating enable
-
-    # floating obsidian
-    for_window [class="^obsidian$"] floating enable
 #
 # Bar:
 #
