@@ -53,24 +53,23 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
 
 
     # desktop configuration
-    bindswitch lid:on output eDP-1 disable
-    bindswitch lid:off output eDP-1 enable
+    # issue causing by this clamshell mode config when resuming from sleep in laptop mode, the screen does not light again. Should post this one
+    # bindswitch lid:on output eDP-1 disable
+    # bindswitch lid:off output eDP-1 enable
     output HDMI-A-2 mode 2560x1440@59.951Hz adaptive_sync on
 
 ### Idle configuration
+    set $lock 'swaylock --daemonize --color 000000'
+
     exec swayidle -w \
-         timeout 300 'swaylock -f -c 000000' \
-         timeout 310 'swaymsg "output * dpms off"' \
-              resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f -c 000000' \
-         lock 'swaylock -f -c 000000'
+      timeout 10 'if pgrep -x swaylock; then swaymsg "output * dpms off"; fi' \
+      timeout 300 'swaymsg "output * dpms off"' \
+        resume 'swaymsg "output * dpms on"' \
+      after-resume 'swaymsg "output * dpms on"' \
+      before-sleep $lock \
+      lock $lock
 
 bindsym --release $mod+Control+l exec loginctl lock-session
-
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
 
 ### Input configuration
 #
