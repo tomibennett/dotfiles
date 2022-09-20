@@ -301,19 +301,20 @@ bindsym --release $mod+Control+l exec loginctl lock-session
     exec swaymsg 'exec keepassxc; for_window [app_id="^org.keepassxc.KeePassXC$"] move scratchpad'
     bindsym $mod+Shift+f [app_id="^org.keepassxc.KeePassXC$"] scratchpad show
 
-    # minimizable sticky note app
+    # sticky minimizable notes taking app
     for_window [class="^obsidian$"] floating enable
     exec swaymsg 'exec obsidian; for_window [class="^obsidian$"] move scratchpad'
     bindsym $mod+Shift+o [class="^obsidian$"] scratchpad show
 
+    # sticky minimizable file manager app
+    for_window [app_id="^nemo$"] floating enable
+    exec swaymsg 'exec nemo; for_window [app_id="^nemo$"] move scratchpad'
+    bindsym $mod+Shift+n [app_id="^nemo$"] scratchpad show
 #
 # Windows behavior
 #
     # floating sound control panel
     for_window [app_id="^pavucontrol$"] floating enable
-
-    # floating file manager
-    for_window [app_id="^nemo$"] floating enable
 
     # floating image viewer
     for_window [app_id="^eog$"] floating enable
