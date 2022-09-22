@@ -118,6 +118,16 @@ bindsym --release $mod+Control+l exec loginctl lock-session
     gaps inner 5
     gaps outer 3
 
+### additional configurations
+#
+# Bar:
+#
+    bar swaybar_command waybar
+#
+# Including:
+#
+    include /etc/sway/config.d/*
+
 ### Key bindings
 #
 # Basics:
