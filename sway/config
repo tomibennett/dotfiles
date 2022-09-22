@@ -331,12 +331,15 @@ bindsym --release $mod+Control+l exec loginctl lock-session
 
     # floating calculator
     for_window [app_id="^org.gnome.Calculator$"] floating enable
-#
-# Bar:
-#
-    bar swaybar_command waybar
-#
-# Including configuration files:
-#
-    include /etc/sway/config.d/*
 
+#
+# Layouts
+#
+    exec swaymsg 'exec tmux new-session -s default'
+    exec swaymsg 'exec workspace 1; exec thunderbird; exec discord; exec slack; exec signal-desktop; exec tweetdeck'
+    exec swaymsg 'exec workspace 2; exec alacritty'
+    exec swaymsg 'exec workspace 3; exec firefox'
+# assign [class="^thunderbird$"] → 1
+# assign [class="^discord$"] → 1
+# assign [class="^Slack$"] → 1
+# assign [class="^Signal$"] → 1
