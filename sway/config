@@ -39,7 +39,7 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
         --center \
         --list 10'
 
-### Output configuration
+### Output
 #
 # Wallpaper
 #
@@ -58,7 +58,7 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
     # bindswitch lid:off output eDP-1 enable
     output HDMI-A-2 mode 2560x1440@59.951Hz adaptive_sync on
 
-### Idle configuration
+### Idle
     set $lock 'swaylock --daemonize --color 000000'
 
     exec swayidle -w \
@@ -71,9 +71,9 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
 
 bindsym --release $mod+Control+l exec loginctl lock-session
 
-### Input configuration
+### Input
 #
-# Keyboard
+# Keyboard:
 #
     input type:keyboard {
       xkb_layout "us"
@@ -289,34 +289,39 @@ bindsym --release $mod+Control+l exec loginctl lock-session
     # region
     bindsym $mod+Control+4 exec grim -g "$(slurp)"
 
-### Others
+### Windows
 #
-# Startup routine:
+# launched at login:
 #
     # redshift
-    # launch geolocalisation daemon and redshift itself
+    # geolocalisation daemon and redshift itself
     exec swaymsg 'exec /usr/lib/geoclue-2.0/demos/agent; exec redshift-gtk'
 
     # cloud provider
     exec swaymsg 'exec kDrive'
-
-    # floating sticky minimizable Dictionnary
+#
+# floating sticky minimizable Dictionnary:
+#
     for_window [class="^Antidote"] floating enable
     no_focus [class="^Antidote" window_type="utility"]
     exec swaymsg 'exec Antidote; for_window [class="^Antidote"] move scratchpad'
     bindsym $mod+Shift+g [class="^Antidote 10$"] scratchpad show
-
-    # floating sticky minimizable Keychain
+#
+# floating sticky minimizable Keychain:
+#
     for_window [app_id="^org.keepassxc.KeePassXC$"] floating enable
     exec swaymsg 'exec keepassxc; for_window [app_id="^org.keepassxc.KeePassXC$"] move scratchpad'
     bindsym $mod+Shift+f [app_id="^org.keepassxc.KeePassXC$"] scratchpad show
 
-    # sticky minimizable notes taking app
-    for_window [class="^obsidian$"] floating enable
+#
+# sticky minimizable notes taking app:
+#
     exec swaymsg 'exec obsidian; for_window [class="^obsidian$"] move scratchpad'
     bindsym $mod+Shift+o [class="^obsidian$"] scratchpad show
 
-    # sticky minimizable file manager app
+#
+# sticky minimizable file manager app:
+#
     for_window [app_id="^nemo$"] floating enable
     exec swaymsg 'exec nemo; for_window [app_id="^nemo$"] move scratchpad'
     bindsym $mod+Shift+n [app_id="^nemo$"] scratchpad show
