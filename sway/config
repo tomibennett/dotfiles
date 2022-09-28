@@ -307,7 +307,7 @@ bindsym --release $mod+Control+l exec loginctl lock-session
 #
     for_window [class="^Antidote"] floating enable
     no_focus [class="^Antidote" window_type="utility"]
-    exec swaymsg 'exec Antidote; for_window [class="^Antidote"] move scratchpad'
+    exec swaymsg 'exec Antidote; for_window [class="^Antidote$"] move scratchpad'
     bindsym $mod+Shift+g [class="^Antidote 10$"] scratchpad show
 #
 # floating sticky minimizable Keychain:
@@ -326,8 +326,8 @@ bindsym --release $mod+Control+l exec loginctl lock-session
 # sticky minimizable file manager app:
 #
     for_window [app_id="^nemo$"] floating enable
-    exec swaymsg 'exec nemo; for_window [app_id="^nemo$"] move scratchpad'
-    bindsym $mod+Shift+n [app_id="^nemo$"] scratchpad show
+#    exec swaymsg 'exec nemo; for_window [app_id="^nemo$"] move scratchpad'
+#    bindsym $mod+Shift+n [app_id="^nemo$"] scratchpad show
 #
 # Windows behavior
 #
