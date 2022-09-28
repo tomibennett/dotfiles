@@ -298,7 +298,10 @@ bindsym --release $mod+Control+l exec loginctl lock-session
     exec swaymsg 'exec /usr/lib/geoclue-2.0/demos/agent; exec redshift-gtk'
 
     # cloud provider
-    exec swaymsg 'exec kDrive'
+    exec swaymsg 'exec kDrive&'
+
+    # disk mounter
+    exec swaymsg 'exec udiskie --tray&'
 #
 # floating sticky minimizable Dictionnary:
 #
