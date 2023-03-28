@@ -10,6 +10,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'chriskempson/vim-tomorrow-theme'
   Plug 'tpope/vim-db'
   Plug 'ekalinin/Dockerfile.vim'
+  Plug 'tpope/vim-surround'
 
   " git
   Plug 'rdolgushin/gitignore.vim'
@@ -23,6 +24,9 @@ call plug#begin('~/.vim/plugged')
   " github gists
   Plug 'mattn/webapi-vim'
   Plug 'mattn/gist-vim'
+
+  " html
+  Plug 'mattn/emmet-vim'
 
   " javascript
   " Plug 'mxw/vim-jsx'
