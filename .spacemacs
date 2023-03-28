@@ -74,7 +74,7 @@ This function should only modify configuration layer settings."
           org-roam-db-autosync-mode t
           org-enable-roam-protocol t
           org-enable-roam-ui t
-          org-roam-directory (file-truename (getenv ORG_ROAM_DIRECTORY))
+          org-roam-directory (file-truename (getenv "ORG_ROAM_DIRECTORY"))
           org-startup-with-inline-images t)
      (ranger :variables
              ranger-show-preview t
