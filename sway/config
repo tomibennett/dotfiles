@@ -2,9 +2,11 @@
 
 ### Config
 #
-# XDG related
+# set sway as current desktop for XDG
 #
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
+seat * xcursor_theme default 24
 
 ### Variables
 #
@@ -33,7 +35,7 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
       --dmenu='bemenu \
         --ignorecase \
         --scrollbar autohide \
-        --margin 900 \
+        --margin 600 \
         --prompt ">" \
         --fn "Cantarell 15" \
         --center \
@@ -43,7 +45,7 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
 #
 # Wallpaper
 #
-    output * bg ~/Pictures/backgrounds/2215599886_8b51b428f5_b.jpg fill
+  output * bg background fill
 #
 # Example configuration:
 #
@@ -51,22 +53,27 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
+# configuration has been delegated to way-displays
+    exec way-displays > /tmp/way-displays.${XDG_VTNR}.${USER}.log 2>&1
 
-    # desktop configuration
-    # issue causing by this clamshell mode config when resuming from sleep in laptop mode, the screen does not light again. Should post this one
-    # bindswitch lid:on output eDP-1 disable
-    # bindswitch lid:off output eDP-1 enable
-    output HDMI-A-2 mode 2560x1440@59.951Hz adaptive_sync on
+    workspace 1 output DP-1
+    workspace 2 output DP-1
+    workspace 3 output HDMI-A-2
+    workspace 4 output HDMI-A-2
+    workspace 5 output HDMI-A-2
+    workspace 6 output HDMI-A-2
+    workspace 7 output HDMI-A-2
+    workspace 8 output HDMI-A-2
+    workspace 9 output HDMI-A-2
+    workspace 10 output HDMI-A-2
 
-### Idle
-    set $lock 'swaylock --daemonize --color 000000'
+### Idle & Lock mgmt
+    set $lock 'swaylock --daemonize --image ${HOME}/.config/lockscreen'
 
     exec swayidle -w \
-      timeout 10 'if pgrep -x swaylock; then swaymsg "output * dpms off"; fi' \
-      timeout 300 'swaymsg "output * dpms off"' \
-        resume 'swaymsg "output * dpms on"' \
-      after-resume 'swaymsg "output * dpms on"' \
       before-sleep $lock \
+      timeout 10 'if pgrep -x swaylock; then swaymsg "output * dpms off"; fi' \
+        resume 'swaymsg "output * dpms on"' \
       lock $lock
 
 bindsym --release $mod+Control+l exec loginctl lock-session
@@ -77,48 +84,43 @@ bindsym --release $mod+Control+l exec loginctl lock-session
 #
     input type:keyboard {
       xkb_layout "us"
-      xkb_variant "altgr-intl"
+      xkb_options "compose:ralt"
       repeat_delay 350
       repeat_rate 35
     }
+
+    focus_follows_mouse no
 
 ### Style
 #
 # title:
 #
-    font pango:Overpass Nerd Font Semi Bold 14px
+    font pango:Overpass Nerd Font Semi Bold 15px
     titlebar_border_thickness 1
-    title_align center
+    title_align left
 #
 # Borders:
 #
-    set $purple #240046
+    set $beige #e3cfcd
+    set $black #2a2a2a
+    set $grey #515556
+    set $lighter grey #9ab0bf
 
-    set $black #000000
-    set $white #ffffff
+    # syntax from man 5 sway:
+    #client.<class>              <border>    <background>    <text>     <indicator>    <child_border>
+    client.focused              #4c7899     #6503a3         #ffffff    #2e9ef4        #6503a3
+    client.focused_inactive     #333333     #5f676a         #ffffff    #484e50        #5f676a
+    client.focused_tab_title    #333333     #5f676a         #ffffff
+    client.unfocused            #333333     #222222         #888888    #292d2e        #222222
+    client.urgent               #2f343a     #900000         #ffffff    #900000        #900000
+    client.placeholder          #000000     #0c0c0c         #ffffff    #000000        #0c0c0c
 
-    set $lightergray #e5e5e5
-
-    set $lightgray #8e8e8e
-    set $darkergray #333333
-    set $toto #888888
-    set $gray #424242
-
-    # from man 5 sway: client.<class> <border> <background> <text>
-    client.focused $gray $gray $lightergray
-    client.focused_inactive $darkergray $darkergray $toto
-    # client.unfocused
-    # client.urgent
-
-    default_border pixel 7
+    default_border pixel 4
     smart_borders off
 #
 # Gaps:
 #
     gaps inner 5
-    gaps outer 3
-
-### additional configurations
 #
 # Bar:
 #
@@ -216,6 +218,10 @@ bindsym --release $mod+Control+l exec loginctl lock-session
     bindsym $mod+Shift+8 move container to workspace number 8
     bindsym $mod+Shift+9 move container to workspace number 9
     bindsym $mod+Shift+0 move container to workspace number 10
+
+    # move focused workspace to ouput
+    bindsym $mod+Shift+Control+l move workspace to output right
+    bindsym $mod+Shift+Control+h move workspace to output left
 #
 # Layout:
 #
@@ -264,16 +270,10 @@ bindsym --release $mod+Control+l exec loginctl lock-session
         # right will grow the containers width
         # up will shrink the containers height
         # down will grow the containers height
-        bindsym $left resize shrink width 10px
-        bindsym $down resize grow height 10px
-        bindsym $up resize shrink height 10px
-        bindsym $right resize grow width 10px
-
-        # Ditto, with arrow keys
-        bindsym Left resize shrink width 10px
-        bindsym Down resize grow height 10px
-        bindsym Up resize shrink height 10px
-        bindsym Right resize grow width 10px
+        bindsym $mod+Left resize shrink width 10px
+        bindsym $mod+Down resize grow height 10px
+        bindsym $mod+Up resize shrink height 10px
+        bindsym $mod+Right resize grow width 10px
 
         # Return to default mode
         bindsym Return mode "default"
@@ -285,14 +285,21 @@ bindsym --release $mod+Control+l exec loginctl lock-session
 #
     # screenshots:
     # full screen
-    bindsym $mod+Control+3 exec grim
+    bindsym $mod+Control+3 exec "grim -c $GRIM_DEFAULT_DIR && ls -t $GRIM_DEFAULT_DIR | head -1 | wl-copy"
     # region
-    bindsym $mod+Control+4 exec grim -g "$(slurp)"
+    bindsym $mod+Control+4 exec 'grim -cg "$(slurp)" $GRIM_DEFAULT_DIR && ls -t $GRIM_DEFAULT_DIR | head -1 | wl-copy'
+    bindsym $mod+Control+5 exec firefox -new-window
+    bindsym $mod+Control+6 exec $term
 
 ### Windows
+    # managing title format is not yet available on wayland
+    # title_format
 #
 # launched at login:
 #
+    # notification
+    exec swaymsg 'exec dunst'
+
     # redshift
     # geolocalisation daemon and redshift itself
     exec swaymsg 'exec /usr/lib/geoclue-2.0/demos/agent; exec redshift-gtk'
@@ -302,32 +309,36 @@ bindsym --release $mod+Control+l exec loginctl lock-session
 
     # disk mounter
     exec swaymsg 'exec udiskie --tray&'
+
+    # default applications
+    exec swaymsg 'exec tmux new-session -s default; \
+                  exec thunderbird; \
+                  exec discord; \
+                  exec slack; \
+                  exec element-desktop; \
+                  exec tweetdeck; \
+                  exec firefox'
 #
 # floating sticky minimizable Dictionnary:
 #
-    for_window [class="^Antidote"] floating enable
-    no_focus [class="^Antidote" window_type="utility"]
-    exec swaymsg 'exec Antidote; for_window [class="^Antidote$"] move scratchpad'
-    bindsym $mod+Shift+g [class="^Antidote 10$"] scratchpad show
+    # for_window [class="^Antidote"] floating enable
+    # no_focus [class="^Antidote" window_type="utility"]
+    # exec swaymsg 'exec Antidote; for_window [class="^Antidote"] move scratchpad'
+    # bindsym $mod+Shift+g [class="^Antidote 10$"] scratchpad show
 #
-# floating sticky minimizable Keychain:
+# floating sticky minimizable keychain:
 #
-    for_window [app_id="^org.keepassxc.KeePassXC$"] floating enable
-    exec swaymsg 'exec keepassxc; for_window [app_id="^org.keepassxc.KeePassXC$"] move scratchpad'
-    bindsym $mod+Shift+f [app_id="^org.keepassxc.KeePassXC$"] scratchpad show
+    set $keychain_app "keepassxc"
+    set $keychain_app_id "^org.keepassxc.KeePassXC$"
 
-#
-# sticky minimizable notes taking app:
-#
-    exec swaymsg 'exec obsidian; for_window [class="^obsidian$"] move scratchpad'
-    bindsym $mod+Shift+o [class="^obsidian$"] scratchpad show
+    for_window [app_id=keychain_app_id] floating enable
+    exec swaymsg 'exec $keychain_app; for_window [app_id=keychain_app_id] move scratchpad'
+    bindsym $mod+shift+f [app_id=keychain_app_id] scratchpad show
 
 #
 # sticky minimizable file manager app:
 #
-    for_window [app_id="^nemo$"] floating enable
-#    exec swaymsg 'exec nemo; for_window [app_id="^nemo$"] move scratchpad'
-#    bindsym $mod+Shift+n [app_id="^nemo$"] scratchpad show
+#    for_window [app_id="^nemo$"] floating enable
 #
 # Windows behavior
 #
@@ -339,15 +350,3 @@ bindsym --release $mod+Control+l exec loginctl lock-session
 
     # floating calculator
     for_window [app_id="^org.gnome.Calculator$"] floating enable
-
-#
-# Layouts
-#
-    exec swaymsg 'exec tmux new-session -s default'
-    exec swaymsg 'exec workspace 1; exec thunderbird; exec discord; exec slack; exec signal-desktop; exec tweetdeck'
-    exec swaymsg 'exec workspace 2; exec alacritty'
-    exec swaymsg 'exec workspace 3; exec firefox'
-# assign [class="^thunderbird$"] → 1
-# assign [class="^discord$"] → 1
-# assign [class="^Slack$"] → 1
-# assign [class="^Signal$"] → 1
