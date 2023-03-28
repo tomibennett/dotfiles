@@ -117,7 +117,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: FiraCode Nerd Font Mono
+    family: FiraCode Tommy
 
     # The `style` can be specified to pick a specific face.
     style: Medium
@@ -216,7 +216,7 @@ font:
 
   # Vi mode cursor colors
   #
-  # Colors for the cursor when the vi mode is active.
+  # Colrs for the cursor when the vi mode is active.
   #
   # Allowed values are CellForeground/CellBackground, which reference the
   # affected cell, or hexadecimal colors like #ff00ff.
