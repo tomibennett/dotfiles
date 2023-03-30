@@ -32,21 +32,13 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '((php :variables
-          php-backend 'lsp)
-
-     (typescript :variables
+   '((typescript :variables
                  typescript-backend 'tide
                  tide-tsserver-executable "~/.nvm/versions/node/v19.4.0/bin/tsserver"
                  typescript-indent-level 2)
      nginx
      yaml
      html
-     ;; ----------------------------------------------------------------
-     ;; Example of useful layers you may want to use right away.
-     ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
-     ;; `M-m f e R' (Emacs style) to install them.
-     ;; ----------------------------------------------------------------
      auto-completion
      better-defaults
      emacs-lisp
