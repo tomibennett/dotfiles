@@ -28,8 +28,6 @@
   alias txr='tmux new-session -s default'
 
   # yubikey
-  export GPG_TTY="$(tty)"
-  export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
   gpgconf --launch gpg-agent
 
   # fix a bug in wayland that prevents java-based application to work in GUI
