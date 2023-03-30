@@ -636,7 +636,7 @@ before packages are loaded."
 
   (setq projectile-switch-project-action #'projectile-dired)
 
-  ()
+  (setq vc-follow-symlinks t)
   )
 
 
