@@ -52,33 +52,14 @@ export PATH="${HOME}/.config/emacs/bin:${PATH}"
 # }
 
 # java {
-  export SDKMAN_DIR="${HOME}/.sdkman"
-  [[ -s "${HOME}/.sdkman/bin/sdkman-init.sh" ]] && source "${HOME}/.sdkman/bin/sdkman-init.sh"
-# }
-
-# javascript {
-  export NPM_PACKAGES="${HOME}/.npm-packages"
-  export PATH="$NPM_PACKAGES/bin:$PATH"
-  unset MANPATH
-  export N_PREFIX="${HOME}/.n"
-  export PATH="${N_PREFIX}/bin:${PATH}"
-  [ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
-  source /usr/share/nvm/nvm.sh
-  source /usr/share/nvm/bash_completion
-  source /usr/share/nvm/install-nvm-exec
+  . ~/.asdf/plugins/java/set-java-home.zsh
 # }
 
 # LaTeX {
   export PATH="/Library/TeX/texbin:${PATH}"
 # }
 
-# python {
-  eval "$(pyenv init -)"
-  export PATH="${HOME}/.local/bin:${PATH}"
-# }
-
 # ruby {
-  eval "$(~/.rbenv/bin/rbenv init -)"
   alias be='bundle exec'
 # }
 
@@ -86,9 +67,12 @@ export PATH="${HOME}/.config/emacs/bin:${PATH}"
   export PATH="${HOME}/.cargo/bin:${PATH}"
 # }
 
-# spacemacs {
-  export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
-  export PKG_CONFIG_PATH="/usr/local/opt/imagemagick@6/lib/pkgconfig"
+# disable terminal freeze on ctrl + s keypress {
+  stty -ixon
+# }
+
+# asdf {
+  . /opt/asdf-vm/asdf.sh
 # }
 
 # Local Variables:
