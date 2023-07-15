@@ -2,8 +2,7 @@
   export GRIM_DEFAULT_DIR=${HOME}/Pictures/screenshots/
 
   # emacs
-  alias emacs="emacsclient"
-  export EDITOR="emacsclient -c"
+  export EDITOR="emacs -nw"
 
   # display/monitor
   alias deactivate-internal-monitor="swaymsg output eDP-1 disable"
@@ -31,12 +30,15 @@
   gpgconf --launch gpg-agent
 
   # fix a bug in wayland that prevents java-based application to work in GUI
-  export _JAVA_AWT_WM_NONREPARENTING=1
+  # export _JAVA_AWT_WM_NONREPARENTING=1
 # }
 
 # bin {
   export PATH="$HOME/bin:$PATH"
 # }
+
+# doomemacs
+export PATH="${HOME}/.config/emacs/bin:${PATH}"
 
 # lisp {
   alias clisp='clisp -q'
