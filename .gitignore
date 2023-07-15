@@ -3,8 +3,9 @@
 
 .idea
 
-.spacemacs.env
+doom/custom.el
 
 # temp files
+*~
 *.\#*
 *.swp
