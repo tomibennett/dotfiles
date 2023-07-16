@@ -1,11 +1,13 @@
 exec_always --no-startup-id "setxkbmap -option ctrl:nocaps -option compose:ralt"
 
+include ~/.config/i3/current-device.conf
+
+set $dmenu "rofi -show drun"
+
 exec --no-startup-id "picom &"
 exec --no-startup-id "~/.fehbg &"
 exec --no-startup-id "redshift &"
 exec --no-startup-id 'dunst &'
-exec --no-startup-id 'kDrive &'
-
 
 gaps inner 10
 default_border pixel 5
@@ -35,7 +37,7 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-# bindsym $mod+Control+l exec --no-startup-id i3lock && sleep 1 && systemctl suspend
+bindsym $mod+Control+l exec --no-startup-id i3lock && sleep 1 && systemctl suspend
 
 # system tray
 # NetworkManager is the most popular way to manage wireless networks on Linux,
@@ -49,7 +51,6 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5-%
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
 
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -58,16 +59,13 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec alacritty
-
-# start lockscreen
-bindsym $mod+Ctrl+l exec i3lock
+bindsym $mod+Return exec $terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec "rofi -show drun"
+bindsym $mod+d exec $dmenu
 
 # change focus
 bindsym $mod+h focus left
