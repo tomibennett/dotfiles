@@ -10,3 +10,4 @@ doom/custom.el
 *.\#*
 *.swp
 /i3/current-device.conf
+/i3/#config#

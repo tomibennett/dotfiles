@@ -1,7 +1,6 @@
 exec_always --no-startup-id "setxkbmap -option ctrl:nocaps -option compose:ralt"
 
-include ~/.config/i3/current-device.conf
-
+set_from_resource $terminal i3wm.default_terminal
 set $dmenu "rofi -show drun"
 
 exec --no-startup-id "picom &"
@@ -60,6 +59,7 @@ tiling_drag modifier titlebar
 
 # start a terminal
 bindsym $mod+Return exec $terminal
+
 
 # kill focused window
 bindsym $mod+Shift+q kill
