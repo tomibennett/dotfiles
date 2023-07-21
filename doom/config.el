@@ -71,25 +71,6 @@
   ;; building new templates for reading-notes on movie, podcasts, books, etc
   ;; (add-to-list org-capture-templates ()
 
-  ;; style for headings
-  (set-face-attribute 'org-level-8 nil :weight 'bold :inherit 'default)
-  ;; Low levels are unimportant => no scaling
-  (set-face-attribute 'org-level-7 nil :inherit 'org-level-8)
-  (set-face-attribute 'org-level-6 nil :inherit 'org-level-8)
-  (set-face-attribute 'org-level-5 nil :inherit 'org-level-8)
-  (set-face-attribute 'org-level-4 nil :inherit 'org-level-8)
-  ;; Top ones get scaled the same as in LaTeX (\large, \Large, \LARGE)
-  (set-face-attribute 'org-level-3 nil :inherit 'org-level-8 :height 1.15) ;\large
-  (set-face-attribute 'org-level-2 nil :inherit 'org-level-8 :height 1.33) ;\Large
-  (set-face-attribute 'org-level-1 nil :inherit 'org-level-8 :height 1.525) ;\LARGE
-  ;; Only use the first 4 styles and do not cycle.
-  (setq org-cycle-level-faces nil)
-  (setq org-n-level-faces 4)
-  ;; Document Title, (\huge)
-  (set-face-attribute 'org-document-title nil
-                      :height 2.074
-                      :foreground 'unspecified
-                      :inherit 'org-level-8)
   )
 
 (after! flyspell
