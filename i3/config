@@ -16,7 +16,9 @@ font pango:Overpass Nerd Font Semi Bold 15px
 # title configuration
 title_align left
 # title_format
-# title_window_icon yes
+for_window [all] title_window_icon no
+
+for_window [all] title_format "%class"
 
 focus_follows_mouse no
 
@@ -26,9 +28,7 @@ set $mod Mod4
 # is used in the bar {} block below.
 # font pango:monospace 8
 
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:Fira Code Tommy 10
+font pango:Inter semi-bold 11
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -198,9 +198,9 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-bindsym $mod+Ctrl+3 exec --no-startup-id "flameshot gui"
-
 bindsym $mod+r mode "resize"
+
+bindsym $mod+Ctrl+3 exec --no-startup-id "flameshot gui"
 
 # bar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
