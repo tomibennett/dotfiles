@@ -1,5 +1,8 @@
 *default_terminal: alacritty
 
+XCursor.theme: Posy_Cursor_Black
+Xcursor.size: 24
+
 URxvt.font: xft:fira Code Tommy:size=10
 URxvt.letterSpace: -1
 URxvt.scrollBar: false

@@ -1,6 +1,11 @@
 *default_terminal: urxvt
 
-URxvt.font: xft:fira Code Tommy:size=10
+XCursor.theme: Posy_Cursor_Black
+Xcursor.size: 24
+
+URxvt.font: xft:fira Code Tommy:size=11
+Xft.dpi: 96
+
 URxvt.letterSpace: -1
 URxvt.scrollBar: false
 
