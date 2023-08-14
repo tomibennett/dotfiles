@@ -8,6 +8,7 @@ exec --no-startup-id "~/.fehbg &"
 exec --no-startup-id "redshift &"
 exec --no-startup-id 'dunst &'
 
+gaps top 36
 gaps inner 10
 default_border pixel 5
 
