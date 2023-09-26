@@ -7,7 +7,7 @@
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
 (setq user-full-name "Thomas Bennett"
-      user-mail-address "thomas.bennett@caminu.fr")
+      user-mail-address (getenv "GIT_USERMAIL"))
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
@@ -40,10 +40,6 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory (getenv "NOTES_PATH"))
-
 (global-visual-line-mode t)
 
 (after! rainbow-mode
@@ -61,17 +57,30 @@
 ;;   - Setting variables which explicitly tell you to set them before their
 ;;     package is loaded (see 'C-h v VARIABLE' to look up their documentation).
 ;;   - Setting doom variables (which start with 'doom-' or '+').
-;;
-(after! org
-  (setq org-refile-use-outline-path 'file)
-  (setq org-outline-path-complete-in-steps nil)
-  (setq org-refile-targets '((org-agenda-files . (:maxlevel . 9))))
-  (setq org-startup-with-inline-images t)
-  (setq org-startup-indented nil)
-  ;; building new templates for reading-notes on movie, podcasts, books, etc
-  ;; (add-to-list org-capture-templates ()
 
-  )
+;;org
+;; If you use `org' and don't want your org files in the default location below,
+;; change `org-directory'. It must be set before org loads!
+(setq org-directory (getenv "NOTES_PATH"))
+
+(defun list-org-files ()
+  (directory-files-recursively org-directory "\.org$"))
+
+(after! org
+  (setq org-refile-use-outline-path 'file
+        org-outline-path-complete-in-steps nil
+        org-refile-targets '((list-org-files  :maxlevel . 9))
+        org-refile-allow-creating-parent-nodes t
+        org-log-refile 'time
+        org-log-done 'time
+        org-log-done-with-time t
+        org-startup-with-inline-images t
+        org-startup-indented nil)
+
+  ;; (add-to-list org-capture-templates ())
+)
+;; building new templates for reading-notes on movie, podcasts, books, etc
+
 
 (after! flyspell
   (flyspell-mode 0))
