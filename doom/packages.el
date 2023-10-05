@@ -7,6 +7,8 @@
 
 (package! docker-compose-mode)
 (package! rainbow-mode)
+(package! org-appear)
+(package! org-modern)
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)

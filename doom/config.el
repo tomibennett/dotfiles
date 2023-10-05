@@ -24,7 +24,7 @@
 (setq ;; doom-font (font-spec :family "Fira Code Tommy" :size 13 :weight 'semi-bold)
      doom-font "Fira Code Tommy Retina:pixelsize=13:style=Retina"
      doom-unicode-font (font-spec :family "FiraMono Nerd Font Medium")
-     doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
+     doom-variable-pitch-font (font-spec :family "DejaVu Serif" :size 13))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -74,19 +74,29 @@
         org-log-refile 'time
         org-log-done 'time
         org-log-done-with-time t
+
+        ;; visual aspect
         org-startup-with-inline-images t
-        org-startup-indented nil)
+        org-pretty-entities t
+        org-hide-emphasis-markers t
+        org-startup-indented t)
 
-  ;; (add-to-list org-capture-templates ())
+        ;; building new templates for reading-notes on movie, podcasts, books, etc
+        ;; (add-to-list org-capture-templates ())
 )
-;; building new templates for reading-notes on movie, podcasts, books, etc
 
+(use-package! org-appear
+  :hook (org-mode . org-appear-mode))
+
+(use-package! org-modern
+  :hook (org-mode . org-modern-mode))
 
 (after! flyspell
   (flyspell-mode 0))
 
 (after! swiper
   (global-set-key "\C-s" 'swiper))
+
 ;; Here are some additional functions/macros that will help you configure Doom.
 ;;
 ;; - `load!' for loading external *.el files relative to this one
