@@ -1,79 +1,61 @@
-# user {
-  export GRIM_DEFAULT_DIR=${HOME}/Pictures/screenshots/
+export GRIM_DEFAULT_DIR=${HOME}/Pictures/screenshots/
 
-  # emacs
-  export EDITOR="emacs -nw"
+# emacs
+export EDITOR="emacs -nw"
 
-  # display/monitor
-  alias deactivate-internal-monitor="swaymsg output eDP-1 disable"
+# general purpose aliases
+alias date-iso='date +%Y%m%d'
+alias scurl='curl --silent --show-error'
+alias bat='bat --number --theme TwoDark'
+alias less='less --RAW-CONTROL-CHARS'
+alias ee='exa --long --classify --group'
+alias ea='exa --long --classify --group --all'
+alias tree='exa  --color=always --tree --classify --all'
 
-  # general purpose aliases
-  alias date-iso='date +%Y%m%d'
-  alias scurl='curl --silent --show-error'
-  alias bat='bat --number --theme TwoDark'
-  alias less='less --RAW-CONTROL-CHARS'
-  alias ee='exa --long --classify --group'
-  alias ea='exa --long --classify --group --all'
-  alias tree='exa  --color=always --tree --classify --all'
+# let logs files flow with the ability to stop and search in them
+alias tails='less -ia --RAW-CONTROL-CHARS --line-numbers +G'
 
-  # let logs files flow with the ability to stop and search in them
-  alias tails='less -ia --RAW-CONTROL-CHARS --line-numbers +G'
+# tmux related
+alias txa='tmux attach -t # <target-session>'
+alias txn='tmux new-session -s # <session-name>'
+alias txl='tmux list-sessions | cut -d ":" -f 1'
+# restore tmux sessions - depends on the presence of a session named default
+alias txr='tmux new-session -s default'
 
-  # tmux related
-  alias txa='tmux attach -t # <target-session>'
-  alias txn='tmux new-session -s # <session-name>'
-  alias txl='tmux list-sessions | cut -d ":" -f 1'
-  # restore tmux sessions - depends on the presence of a session named default
-  alias txr='tmux new-session -s default'
+# yubikey
+gpgconf --launch gpg-agent
 
-  # yubikey
-  gpgconf --launch gpg-agent
+# bin
+export PATH="$HOME/bin:$PATH"
 
-  # fix a bug in wayland that prevents java-based application to work in GUI
-  # export _JAVA_AWT_WM_NONREPARENTING=1
-# }
-
-# bin {
-  export PATH="$HOME/bin:$PATH"
-# }
 
 # doomemacs
-export PATH="${HOME}/.config/emacs/bin:${PATH}"
+export PATH="${HOME}/.emacs.d/bin:${PATH}"
 
-# lisp {
-  alias clisp='clisp -q'
-# }
+# lisp
+alias clisp='clisp -q'
 
-# direnv {
-  eval "$(direnv hook zsh)"
-# }
 
-# global {
-# }
+# direnv
+eval "$(direnv hook zsh)"
 
-# java {
-  . ~/.asdf/plugins/java/set-java-home.zsh
-# }
+# java
+. ~/.asdf/plugins/java/set-java-home.zsh
 
-# LaTeX {
-  export PATH="/Library/TeX/texbin:${PATH}"
-# }
+# LaTeX
+export PATH="/Library/TeX/texbin:${PATH}"
 
-# ruby {
-  alias be='bundle exec'
-# }
+# ruby
+alias be='bundle exec'
 
-# rust {
-  export PATH="${HOME}/.cargo/bin:${PATH}"
-# }
+# rust
+export PATH="${HOME}/.cargo/bin:${PATH}"
 
-# disable terminal freeze on ctrl + s keypress {
-  stty -ixon
-# }
+# disable terminal freeze on ctrl + s keypress
+stty -ixon
 
-# asdf {
-  . /opt/asdf-vm/asdf.sh
-# }
+# asdf
+. /opt/asdf-vm/asdf.sh
 
 # Local Variables:
 # mode: sh
