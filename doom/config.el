@@ -22,9 +22,9 @@
 ;; accept. For example:
 ;;
 (setq ;; doom-font (font-spec :family "Fira Code Tommy" :size 13 :weight 'semi-bold)
-     doom-font "Fira Code Tommy Retina:pixelsize=13:style=Retina"
+     doom-font "Fira Code Tommy Retina:pixelsize=14:style=Retina"
      doom-unicode-font (font-spec :family "FiraMono Nerd Font Medium")
-     doom-variable-pitch-font (font-spec :family "DejaVu Serif" :size 13))
+     doom-variable-pitch-font (font-spec :family "DejaVu Serif" :size 14))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
