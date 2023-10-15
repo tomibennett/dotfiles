@@ -61,7 +61,7 @@
 ;;org
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory (getenv "NOTES_PATH"))
+(setq org-directory (getenv "ORG_PATH"))
 
 (defun list-org-files ()
   (directory-files-recursively org-directory "\.org$"))
